@@ -1,0 +1,33 @@
+# Development Requirements
+# These packages are needed for local development and testing
+
+# Core Airflow for development
+apache-airflow==2.5.1
+
+# Rclone integration
+rclonerc>=0.0.1
+
+# Configuration and data handling
+pyyaml>=5.4.0
+cryptography>=3.4.0
+
+# Development tools
+black>=22.0.0          # Code formatting
+flake8>=4.0.0          # Linting
+pylint>=2.13.0         # Advanced linting
+mypy>=0.950            # Type checking
+pytest>=7.0.0          # Testing framework
+pytest-cov>=3.0.0     # Coverage reporting
+
+# Documentation
+sphinx>=4.5.0
+sphinx-rtd-theme>=1.0.0
+
+# Jupyter for development notebooks
+jupyter>=1.0.0
+ipython>=8.0.0
+
+# Development utilities
+pre-commit>=2.17.0     # Git hooks
+python-dotenv>=0.19.0  # Environment variable loading
+click>=8.0.0           # CLI development

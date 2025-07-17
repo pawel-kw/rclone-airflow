@@ -1,4 +1,15 @@
 
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
 # Keep folder structure
 conf/rclone/*
 !conf/rclone/.gitkeep
@@ -6,6 +17,19 @@ logs/*
 !logs/.gitkeep
 plugins/*
 !plugins/.gitkeep
+
+# Backup files
+*.bak
+*.backup
+config-backup-*/
+
+# Docker volumes and data
+postgres-db-volume/
+airflow_dags/
+airflow_logs/
+airflow_plugins/
+rclone_config/
+backup_jobs_config/
 
 # Python gitignores
 # Byte-compiled / optimized / DLL files

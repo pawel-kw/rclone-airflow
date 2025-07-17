@@ -1,0 +1,49 @@
+# Rclone Backup Jobs Configuration
+# Each job will create a separate Airflow DAG
+
+# Example: Daily backup of home directory
+home_backup:
+  cron: "0 2 * * *"  # Daily at 2 AM
+  source: "/data/home"
+  target: "remote:backups/home"
+  backup: "remote:backups/versioned/home"  # Optional: creates timestamped backups
+  retries: 3
+  retry_delay_minutes: 10
+  paused: true  # Start paused, manually enable in Airflow UI
+  email_on_failure: false
+  rclone_options:
+    progress: true
+    transfers: 4
+
+# Example: Weekly database backup
+database_backup:
+  cron: "0 3 * * 0"  # Weekly on Sunday at 3 AM
+  source: "/data/databases"
+  target: "s3:my-bucket/database-backups"
+  backup: "s3:my-bucket/database-backups/versions"
+  retries: 2
+  paused: true
+  rclone_options:
+    compress: true
+    transfers: 2
+
+# Example: Configuration backup (no versioning)
+config_sync:
+  cron: "0 4 * * *"  # Daily at 4 AM
+  source: "/data/config"
+  target: "remote:sync/config"
+  # No backup directory = simple sync without versioning
+  retries: 1
+  paused: true
+
+# Example: Log archive (monthly)
+log_archive:
+  cron: "0 1 1 * *"  # First day of month at 1 AM
+  source: "/var/log"
+  target: "remote:archives/logs"
+  backup: "remote:archives/logs/monthly"
+  retries: 2
+  paused: true
+  rclone_options:
+    exclude: "*.tmp"
+    include: "*.log"

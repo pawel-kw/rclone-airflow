@@ -1,0 +1,15 @@
+# Portainer Stack Environment Variables
+# Copy and paste these into your Portainer stack's environment variables section
+
+TIMEZONE=UTC
+AIRFLOW_UID=50000
+AIRFLOW_IMAGE=apache/airflow:2.5.1
+AIRFLOW_FERNET_KEY=
+AIRFLOW_DAGS_PAUSED=true
+AIRFLOW_WWW_USER_USERNAME=admin
+AIRFLOW_WWW_USER_PASSWORD=admin
+AIRFLOW_WEBSERVER_PORT=8080
+RCLONE_WEB_PORT=5572
+FLOWER_PORT=5555
+RCLONE_USERNAME=rclone
+RCLONE_PASSWORD=rclone

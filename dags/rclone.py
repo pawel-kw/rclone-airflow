@@ -1,9 +1,8 @@
-
-from airflow import DAG
-from airflow.operators.python import PythonOperator
 from datetime import datetime
 
 import rclonerc
+from airflow import DAG
+from airflow.operators.python import PythonOperator
 
 
 def get_client():
@@ -20,7 +19,7 @@ def test_conn():
 with DAG(
     "rclone-connection-test",
     start_date=datetime.min,
-    tags=['rclone'],
+    tags=["rclone"],
     is_paused_upon_creation=False,
     schedule_interval=None,
     catchup=False,
@@ -29,4 +28,3 @@ with DAG(
         task_id="connect",
         python_callable=test_conn,
     )
-
